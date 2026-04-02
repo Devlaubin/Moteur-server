@@ -6,6 +6,6 @@ services:
     plan: free
     envVars:
       - key: SEARXNG_BASE_URL
-        sync: false
+        value: "https://<YOUR_RENDER_URL>"
       - key: SEARXNG_SECRET_KEY
         generateValue: true
