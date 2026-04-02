@@ -59,8 +59,8 @@ ui:
 
 # CORS ouvert pour appels depuis le navigateur
 outgoing:
-  request_timeout: 6.0
-  max_request_timeout: 15.0
+  request_timeout: 10.0    # délai plus permissif pour éviter des timeout réseau sur Render
+  max_request_timeout: 30.0
   useragent_suffix: ""
   pool_connections: 100
   pool_maxsize: 20
@@ -113,9 +113,10 @@ engines:
     engine: github
     shortcut: gh
 
-  - name: stackoverflow
-    engine: stackoverflow
-    shortcut: so
+# stackoverflow n'est pas présent dans l'image searxng, on le laisse inactif ou on le supprime
+#  - name: stackoverflow
+#    engine: stackoverflow
+#    shortcut: so
 
 locales:
   fr: Français

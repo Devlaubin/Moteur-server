@@ -6,6 +6,6 @@ services:
     plan: free
     envVars:
       - key: SEARXNG_BASE_URL
-        value: "https://<YOUR_RENDER_URL>"
+        value: "https://moteur-server-xng.onrender.com"
       - key: SEARXNG_SECRET_KEY
         generateValue: true
