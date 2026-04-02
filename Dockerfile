@@ -4,4 +4,4 @@ COPY settings.yml /etc/searxng/settings.yml
 
 EXPOSE 8080
 
-CMD ["searxng"]
+CMD ["/usr/local/searxng/bin/python", "-m", "searxng"]
