@@ -1,4 +1,5 @@
 services:
+  # ── Service 1 : SearXNG (inchangé) ──────────────────────────────────────────
   - type: web
     name: searxng
     runtime: docker
@@ -9,3 +10,24 @@ services:
         value: "https://moteur-server-xng.onrender.com"
       - key: SEARXNG_SECRET_KEY
         generateValue: true
+
+  # ── Service 2 : Serveur Node.js (proxy + compteur global) ───────────────────
+  - type: web
+    name: srch-server
+    runtime: node
+    buildCommand: cd server && npm install
+    startCommand: cd server && node server.js
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: SEARXNG_URL
+        value: "https://moteur-server-xng.onrender.com"
+      - key: COUNT_FILE
+        value: /var/data/count.json
+      - key: RESET_SECRET
+        generateValue: true
+    disk:
+      name: srch-data
+      mountPath: /var/data
+      sizeGB: 1
